@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-static-top" style="background-color: #e3f2fd;">
+    <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" href="{% url 'index' %}">Home</a></li>
+        <li>  <a class="navbar-link" href="{% url 'admin:index' %}" target="_blank">Admin</a></li>
+        <li> <a class="navbar-link" href="{% url 'ula:register' %}">Registration</a></li>
+            {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+       <li> <a class="navbar-link" href="{% url 'userlogin' %}">Login</a></li>
+        {% endif %}
+     </ul>
+</div>
+
+<div class="container">
+{% block body_block %}
+{% endblock %}
+    </div>
+
+</body>
+</html>
